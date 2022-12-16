@@ -16,10 +16,6 @@ const userSchema = new Schema({
     required: true,
     lowercase: true,
   },
-  place: {
-    type: String,
-    required: true,
-  },
   age: {
     type: String,
     required: true,

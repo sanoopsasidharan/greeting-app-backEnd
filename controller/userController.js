@@ -5,7 +5,6 @@ module.exports = {
   registerUser: async (req, res, next) => {
     try {
       console.log("createing user");
-      // console.log(req.body);
       const { email, name, number, age, place } = req.body;
       const doesExist = await User.findOne({ email });
       if (doesExist)
@@ -14,6 +13,18 @@ module.exports = {
       const user = new User({ email, name, number, age, place });
       const saveUser = await user.save();
       res.json({ saveUser, user: true, msg: "" });
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  },
+  // lising all users
+  usersList: async (req, res, next) => {
+    try {
+      const users = await User.find();
+      console.log(users);
+      if (users.length > 0) res.json({ users, meg: "user list" });
+      else res.json({ msg: "no users" });
     } catch (error) {
       console.log(error);
       next(error);
