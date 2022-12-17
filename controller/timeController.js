@@ -13,7 +13,7 @@ const timer = () => {
       console.log("thime end");
       console.log("====================================");
     }
-    console.log(currntTime);
+    // console.log(currntTime);
   }, 1000);
 };
 
